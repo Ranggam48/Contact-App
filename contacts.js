@@ -2,13 +2,6 @@ const fs = require("fs");
 const chalk = require("chalk");
 const validator = require("validator");
 
-// const readline = require("readline");
-
-// const rl = readline.createInterface({
-//   input: process.stdin,
-//   output: process.stdout,
-// });
-
 // membuat folder data jika belum ada
 const dirPath = "./data";
 
@@ -23,20 +16,14 @@ if (!fs.existsSync(dataPath)) {
   fs.writeFileSync(dataPath, "[]", "utf-8");
 }
 
-// const pertanyaan = (parameter) => {
-//   return new Promise((resolve, reject) => {
-//     rl.question(parameter, (buffer) => {
-//       resolve(buffer);
-//     });
-//   });
-// };
-
+// fungsi untuk load contact yang telah disimpan pada file json
 const loadContacts = () => {
   const fileBuffer = fs.readFileSync("data/contacts.json", "utf-8");
   const contacts = JSON.parse(fileBuffer);
   return contacts;
 };
 
+// fungsi untuk menambahkan contact pada file json
 const simpanContacts = (nama, email, noHP) => {
   const data = { nama, email, noHP };
   const contacts = loadContacts();
@@ -55,13 +42,12 @@ const simpanContacts = (nama, email, noHP) => {
       return false;
     }
   }
-  //console.log(duplikat);
   contacts.push(data);
   fs.writeFileSync("data/contacts.json", JSON.stringify(contacts));
   console.log("terimakasih sudah mendaftar");
-  //rl.close();
 };
 
+//fungsi untuk menampilkan list kontak yang telah tersimpan
 const listContacts = () => {
   const contacts = loadContacts();
 
@@ -70,6 +56,7 @@ const listContacts = () => {
   });
 };
 
+// fungsi untuk menampilkan detail dari kontak dengan parameter nama
 const detailContacts = (nama) => {
   const contacts = loadContacts();
 
@@ -89,6 +76,7 @@ const detailContacts = (nama) => {
   }
 };
 
+//fungsi untuk menghapus kontak dengan parameter nama
 const deleteContacts = (nama) => {
   const contacts = loadContacts();
 

@@ -1,7 +1,7 @@
-// console.log(process);
-
 const yargs = require("yargs");
 const contacts = require("./contacts");
+
+//Menambahkan kontak baru
 
 yargs
   .command({
@@ -30,7 +30,7 @@ yargs
   })
   .demandCommand();
 
-//menampilkan daftar semua nama & No HP contact
+//Menampilkan daftar semua nama & No HP contact
 
 yargs.command({
   command: "list",
@@ -56,7 +56,7 @@ yargs.command({
   },
 });
 
-//menghapus contact berdasarkan nama
+//Menghapus contact berdasarkan nama
 
 yargs.command({
   command: "delete",
@@ -75,16 +75,3 @@ yargs.command({
 });
 
 yargs.parse();
-
-//console.log(yargs.argv);
-// const contacts = require("./contacts");
-
-// const main = async () => {
-//   const nama = await contacts.pertanyaan("masukan nama: ");
-//   const email = await contacts.pertanyaan("masukan email: ");
-//   const noHP = await contacts.pertanyaan("Masukan no HP: ");
-
-//   contacts.simpanContacts(nama, email, noHP);
-// };
-
-// main();
